@@ -2,9 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+
 
 public class ResizeImages {
     public static void resizeImages(int scaledWidth, int scaledHeight) {
@@ -29,6 +27,22 @@ public class ResizeImages {
 
             // writes to output file
             ImageIO.write(outputImage, formatName, new File(outputImagePath));
+        }catch (Exception e){
+            System.out.println(e.getStackTrace());
+        }
+    }
+
+    public static void resizeImages(double percent){
+
+        String inputImagePath = "resource/1c2f19c60f349dc392533521bc385e65c8567ae0.jpeg";
+        String outputImagePath = "resource/xxx.jpeg";
+
+        try {
+            File inputFile = new File(inputImagePath);
+            BufferedImage inputImage = ImageIO.read(inputFile);
+            int scaledWidth = (int) (inputImage.getWidth() * percent);
+            int scaledHeight = (int) (inputImage.getHeight() * percent);
+            resizeImages(scaledWidth, scaledHeight);
         }catch (Exception e){
             System.out.println(e.getStackTrace());
         }
