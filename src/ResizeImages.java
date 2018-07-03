@@ -5,14 +5,14 @@ import java.io.File;
 
 
 public class ResizeImages {
-    public static void resizeImages(int scaledWidth, int scaledHeight) {
+    public static void resizeImages(String inputImagePath, String outputImagePath){
+        resizeImages(inputImagePath, outputImagePath,840,400);
+    }
+
+    public static void resizeImages(String inputImagePath, String outputImagePath,int scaledWidth, int scaledHeight) {
         try {
-            String inputImagePath = "resource/1c2f19c60f349dc392533521bc385e65c8567ae0.jpeg";
-            String outputImagePath = "resource/xxx.jpeg";
             File inputFile = new File(inputImagePath);
             BufferedImage inputImage = ImageIO.read(inputFile);
-
-
 
             // creates output image
             BufferedImage outputImage = new BufferedImage(scaledWidth,
@@ -34,17 +34,13 @@ public class ResizeImages {
         }
     }
 
-    public static void resizeImages(double percent){
-
-        String inputImagePath = "resource/1c2f19c60f349dc392533521bc385e65c8567ae0.jpeg";
-        String outputImagePath = "resource/xxx.jpeg";
-
+    public static void resizeImages(String inputImagePath, String outputImagePath, double percent){
         try {
             File inputFile = new File(inputImagePath);
             BufferedImage inputImage = ImageIO.read(inputFile);
             int scaledWidth = (int) (inputImage.getWidth() * percent);
             int scaledHeight = (int) (inputImage.getHeight() * percent);
-            resizeImages(scaledWidth, scaledHeight);
+            resizeImages(inputImagePath, outputImagePath, scaledWidth, scaledHeight);
         }catch (Exception e){
             System.out.println(e.getStackTrace());
         }
