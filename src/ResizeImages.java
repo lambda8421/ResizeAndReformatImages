@@ -12,6 +12,8 @@ public class ResizeImages {
             File inputFile = new File(inputImagePath);
             BufferedImage inputImage = ImageIO.read(inputFile);
 
+
+
             // creates output image
             BufferedImage outputImage = new BufferedImage(scaledWidth,
                     scaledHeight, inputImage.getType());
